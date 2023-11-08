@@ -1,0 +1,795 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>𝐀𝐧𝐚𝐬𝐭𝐚𝐬𝐢𝐢𝐚 𝐁𝐢𝐜𝐡𝐮𝐫𝐢𝐧𝐚 - 𝐉𝐚𝐯𝐚 𝐒𝐨𝐟𝐭𝐰𝐚𝐫𝐞 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="4a2638ca-50bf-48a0-b53b-a37a500e99ba" class="page sans"><header><img class="page-cover-image" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/ezgif.com-gif-maker(1).gif" style="object-position:center 22.440000000000005%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/ezgif.com-gif-maker.gif"/></div><h1 class="page-title">𝐀𝐧𝐚𝐬𝐭𝐚𝐬𝐢𝐢𝐚 𝐁𝐢𝐜𝐡𝐮𝐫𝐢𝐧𝐚 - 𝐉𝐚𝐯𝐚 𝐒𝐨𝐟𝐭𝐰𝐚𝐫𝐞 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫</h1><p class="page-description"></p></header><div class="page-body"><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="a776384c-4cd9-4b3f-afff-bce474411159"><div style="font-size:1.5em"><span class="icon">👩‍💻</span></div><div style="width:100%">𝐉𝐚𝐯𝐚 𝐄𝐱𝐩𝐞𝐫𝐭 &amp; 𝐏𝐲𝐭𝐡𝐨𝐧 𝐅𝐚𝐧 | 𝐔𝐤𝐫𝐚𝐢𝐧𝐢𝐚𝐧 𝐓𝐞𝐜𝐡 𝐓𝐚𝐥𝐞𝐧𝐭 | 𝐅𝐞𝐥𝐢𝐧𝐞 𝐅𝐫𝐢𝐞𝐧𝐝 &amp; 𝐏𝐡𝐢𝐥𝐚𝐧𝐭𝐡𝐫𝐨𝐩𝐢𝐬𝐭</div></figure><p id="590f2a29-c834-495b-9642-f7eb4b6338cd" class="">
+</p><div id="deda47db-22fd-4568-8f7b-65e2b862f164" class="column-list"><div id="4eae4e79-f7a8-4a54-8bbe-5318d0a1adbf" style="width:17.5%" class="column"><p id="ecef2f58-c57e-4ecc-955a-bb21273ad9e8" class="">
+</p><p id="49e317cb-748f-4f02-975d-d9c687e5b5cc" class="block-color-teal_background"> 🌿 𝐍𝐚𝐯𝐢𝐠𝐚𝐭𝐢𝐨𝐧</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c0121568-2b16-4c14-9eed-cd8cd2999b71"><div style="font-size:1.5em"><img class="icon" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/_1.png"/></div><div style="width:100%"><a href="https://www.notion.so/4a2638ca50bf48a0b53ba37a500e99ba?pvs=21">| 𝐚𝐛𝐨𝐮𝐭 𝐦𝐞</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="fa79658c-f9ff-4d52-8625-9327921f8b01"><div style="font-size:1.5em"><img class="icon" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/_2.png"/></div><div style="width:100%"><a href="https://www.notion.so/4a2638ca50bf48a0b53ba37a500e99ba?pvs=21">| 𝐜𝐨𝐧𝐭𝐚𝐜𝐭𝐬</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="085c0f79-a1f2-4c12-9d8c-506f94e715b8"><div style="font-size:1.5em"><img class="icon" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/_3.png"/></div><div style="width:100%"><a href="https://www.notion.so/4a2638ca50bf48a0b53ba37a500e99ba?pvs=21">| 𝐬𝐤𝐢𝐥𝐥𝐬</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="eaeace2f-fc1e-4212-b872-5e62c527a247"><div style="font-size:1.5em"><img class="icon" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/_4.png"/></div><div style="width:100%"><a href="https://www.notion.so/4a2638ca50bf48a0b53ba37a500e99ba?pvs=21">| 𝐞𝐝𝐮𝐜𝐚𝐭𝐢𝐨𝐧</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="abf62ca1-bfd6-4ad7-b1f2-f31e7ff2937d"><div style="font-size:1.5em"><img class="icon" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/_5.png"/></div><div style="width:100%"><a href="https://www.notion.so/4a2638ca50bf48a0b53ba37a500e99ba?pvs=21">| 𝐰𝐨𝐫𝐤 𝐞𝐱𝐩𝐞𝐫𝐢𝐞𝐧𝐜𝐞</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2c31f8fa-9ae2-4fd8-a544-ffaf423c1721"><div style="font-size:1.5em"><img class="icon" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/_10.png"/></div><div style="width:100%"><a href="https://www.notion.so/4a2638ca50bf48a0b53ba37a500e99ba?pvs=21">| 𝐨𝐫𝐠𝐚𝐧𝐢𝐳𝐚𝐭𝐢𝐨𝐧𝐬</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c1243f9d-a647-4d81-92d6-e3e0d699c807"><div style="font-size:1.5em"><img class="icon" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/_9.png"/></div><div style="width:100%"><a href="https://www.notion.so/4a2638ca50bf48a0b53ba37a500e99ba?pvs=21">| 𝐜𝐞𝐫𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐞𝐬</a></div></figure><p id="a13a3bc7-52ff-488d-9c17-874c1945958b" class="">
+</p><figure id="badbc487-4295-4f76-8c58-3edb905a3a75" class="image" style="text-align:center"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(3).png"><img style="width:108px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(3).png"/></a></figure></div><div id="6aaa507c-21f4-41f1-b231-990774bd3d66" style="width:17.5%" class="column"><p id="73f7b699-d31f-49cf-842f-f2f2074360c6" class="">
+</p><p id="b7c0fe36-fcff-4c69-8d19-f50b484cdffd" class="">
+</p><p id="c81192f7-2668-4838-85b3-8a0fc28899b6" class="">
+</p><h1 id="4195c441-c6d6-4c39-817c-46f6be26898b" class="block-color-default">👋 𝐀𝐛𝐨𝐮𝐭 𝐌𝐞</h1><p id="2c85a102-c7ac-4ef9-88c8-d505e012c7b6" class="">
+</p><figure id="64911217-43a2-4411-a3b0-36457b799824" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(1)(3).png"><img style="width:932px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(1)(3).png"/></a></figure><figure id="d885bd42-124c-4d6e-8393-7a086bb22635" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat.png"><img style="width:1200px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat.png"/></a></figure><figure id="15687d6f-1a78-4b81-b9c8-913fba2cca46" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%201.png"><img style="width:1200px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%201.png"/></a></figure><p id="f329c387-862f-44eb-a7ac-b3fd327010af" class="">👩‍💻 Crafting Java Magic</p><p id="77e7a908-f383-40c7-81e5-b203e8fbf32c" class="">🌸 Empowering Women in Tech</p><p id="9e8d3314-b7dc-4e62-bb60-4dcbedc66706" class="">🌍 Coding for a Better World</p><p id="2b9964a4-c30b-4912-8a41-39910e4772fd" class="">
+</p></div><div id="4eba081e-6bea-4c39-b7a1-0e43eee81b44" style="width:40%" class="column"><p id="263b9156-2f0c-4e73-a1b2-31e681b4d582" class="">
+</p><p id="73d2e151-abff-4e89-b6f7-3562b2173316" class="">
+</p><p id="d27cc703-d461-48e4-9412-c89fa778b96b" class="">
+</p><p id="160533bb-c2f1-4401-b91e-9b772cd0e5a0" class="">
+</p><p id="90b6fb0a-2075-45b8-81d8-ee102de05967" class="">
+</p><p id="0da5b75c-84b4-4a9b-be49-2e966122b3fe" class="">
+</p><blockquote id="65f549a7-1321-4021-beff-a0f974ec6075" class="">I am a versatile <strong>software developer </strong>with a solid foundation in <strong>Java</strong>, supported by <strong>two years </strong>of professional <strong>experience </strong>and a wide range of personal projects.<p id="1d91670a-086c-4a60-8888-34f9c5142c4c" class="">While Java remains my primary language, I am also skilled in <strong>Python </strong>and enjoy creating games using Pygame, as well as <strong>C#</strong> with Unity. I have a strong interest in <strong>AI </strong>generative models and their limitless possibilities. I am motivated by the potential of <strong>cloud technologies </strong>to transform businesses and industries.</p><p id="2a5a37a1-90a5-416b-840a-f86ecf785357" class="">I strongly believe that what defines a developer is not just the programming language they use, but also their <strong>skills</strong>, <strong>experience</strong>, and above all, their <strong>patience</strong>. My journey in software development is not just a career, but a personal mission to demonstrate that <strong>women in tech </strong>have been <strong>overlooked</strong>. Together, we can make a difference and change the world, one line of code at a time.</p></blockquote><p id="6df2299b-2fdd-4db7-888e-b8402e152797" class="">
+</p><p id="7d20144b-4dd7-4dcc-b6f4-2567f533e4b8" class="">
+</p><p id="c57ae1c4-ee18-4122-bf67-7bcaea3f651a" class="">
+</p><p id="ea915074-0c49-421b-95af-6ef99f8dcc06" class="">
+</p><p id="1dd0c321-d5f9-437a-9f29-89b34644f063" class="">
+</p><p id="335b9a93-87e8-48bd-aed5-eb2d7817ef0f" class="">
+</p><p id="270dd891-de29-4f21-8075-019b90301bf1" class="">
+</p><p id="6a5282e7-d5e2-456c-b29b-025e5f0a1dc4" class="">
+</p><p id="e28dd4e6-5beb-4163-9c49-dba5959b136f" class="">
+</p></div><div id="01abfd45-ba2e-4d2b-8e9b-9f52a9e89929" style="width:20%" class="column"><figure id="62b57a4a-27df-40b7-a77b-f35f462a69dd" class="image"><a href="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGIzZ3FuZ2wxcm1raGgzYjA1eXVtZHN4aWF6a3cyZGRrdzdyY2hqYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/qGRqVEAmDXNQPgJW5m/giphy.gif"><img style="width:240px" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGIzZ3FuZ2wxcm1raGgzYjA1eXVtZHN4aWF6a3cyZGRrdzdyY2hqYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/qGRqVEAmDXNQPgJW5m/giphy.gif"/></a></figure><p id="e0371882-9364-43b4-b8a6-6b699ae5bfae" class="">
+</p><p id="f9ff0536-0b27-43e0-be7b-737e17d444eb" class="">
+</p><p id="042281e1-d563-43f2-9454-8a5b4747a424" class="">
+</p><p id="fec9f32a-4c5f-4fbe-a061-2432a96713fd" class="">
+</p><p id="251f5a17-5ca1-4349-93ff-1fdc86c0c80c" class="">
+</p><p id="18d34c18-8abe-4b19-bce4-a8a155c84d49" class="">
+</p><p id="0f9812f8-edba-4598-a1ad-68d9a4945d67" class="">
+</p></div><div id="ca7ff0fd-13c5-42dc-8679-dd2f04033d3b" style="width:12.499999999999988%" class="column"><p id="5e4e1773-2ce8-4a8c-a879-b93607c3e1d3" class="">
+</p></div></div><div id="d729a514-d986-4297-84d0-c6f932b0dbc0" class="column-list"><div id="b0d57d30-e597-4afb-9e27-34290215233b" style="width:6.25%" class="column"><figure id="f4ccfc48-5aea-459b-93e8-6997ac8ae6f5" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project.png"><img style="width:60px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project.png"/></a></figure><figure id="797106c4-ebf0-4c07-a4d0-4d64ef86c4fd" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project.png"><img style="width:60px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project.png"/></a></figure><figure id="fba4530b-529b-4431-8581-84223865496b" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project.png"><img style="width:60px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project.png"/></a></figure><figure id="4ec43a3a-9385-4c76-8674-1d79177a30d9" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project.png"><img style="width:60px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project.png"/></a></figure><figure id="d56c9b23-85da-49d6-87df-79c6b1cfdec8" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project.png"><img style="width:60px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project.png"/></a></figure><p id="a5448564-c701-40c1-929f-e2b3517e92c3" class="">
+</p></div><div id="e422dd73-e712-41bc-b015-eacaf13f4d0b" style="width:12.5%" class="column"><p id="cc3632de-e2a9-40e6-8a2b-4eb9ff075e12" class="">
+</p></div><div id="be5a1fa9-f894-4e21-8e94-24332b4388f3" style="width:77.93508287292819%" class="column"><figure id="9c9a95a4-3eb1-4cfc-93fa-ec6fb6792e6f" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2).png"><img style="width:1751px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2).png"/></a></figure><h1 id="c9b61953-db13-4292-97bd-1b4504a50b1e" class="block-color-default">📞 𝐂𝐨𝐧𝐭𝐚𝐜𝐭𝐬</h1><figure id="3c893ffe-aa0a-4003-92ff-4106174164a4" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%202.png"><img style="width:1200px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%202.png"/></a></figure><div id="42883497-dfa1-46b5-bbe7-20ada9988642" class="column-list"><div id="9c33236b-4a4a-485e-8983-9e899ac6e113" style="width:37.5%" class="column"><figure id="62792af9-6943-4a8b-8fe7-a3c419ba9960"><div class="source"><a href="https://indify.co/widgets/live/button/BdYHYRwXrzPnCCeeXHre">https://indify.co/widgets/live/button/BdYHYRwXrzPnCCeeXHre</a></div></figure></div><div id="61b15ad4-5fea-4f90-a83b-8d0b966d3284" style="width:20.833333333333325%" class="column"><figure id="351cf6c0-ee9c-4a35-94c6-c8cfedef52fb"><div class="source"><a href="https://indify.co/widgets/live/button/noEruyVFJWF4wsD6xGWU">https://indify.co/widgets/live/button/noEruyVFJWF4wsD6xGWU</a></div></figure></div><div id="12af3981-c162-4afb-b9cc-fd957c76fc35" style="width:41.66666666666667%" class="column"><figure id="018fc296-2405-4425-bc83-266ebca16b3b"><div class="source"><a href="https://indify.co/widgets/live/button/fCLSuivGU6cPlvXyInmW">https://indify.co/widgets/live/button/fCLSuivGU6cPlvXyInmW</a></div></figure></div></div><figure id="c8ef7203-5c2e-4fc9-8ac9-e146761ba540"><div class="source"><a href="https://apption.co/app_forms/5193bd8e">https://apption.co/app_forms/5193bd8e</a></div></figure><p id="fb6c2263-a7c5-45fb-9c4c-6b2c05cd457f" class="">
+</p><p id="c2411fce-7df8-459e-b3fa-33f7d89ca6ba" class="">
+</p><figure id="eaae093c-de20-4aa5-9b58-42e22180b366" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2).png"><img style="width:1751px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2).png"/></a></figure><h1 id="c45cbc0e-f77c-48ad-8c7e-34a9d239f826" class="block-color-default">💫 𝐒𝐤𝐢𝐥𝐥𝐬</h1><figure id="3686b3d7-fc06-4d7b-b717-32e5e881f869" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%203.png"><img style="width:1200px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%203.png"/></a></figure><h3 id="162b7c76-8a68-41b6-baf8-b9b6dfe8eb27" class="block-color-teal_background">𝐅𝐫𝐨𝐧𝐭 𝐞𝐧𝐝</h3><div id="2e8af0e7-b3e4-4d2c-835a-935add78e07d" class="column-list"><div id="40322fa2-d49b-4ea6-9998-df3bcb3a5907" style="width:12.5%" class="column"><figure id="aa97fe0e-7947-4a71-9496-0451e413b58b" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/html.png"><img style="width:64px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/html.png"/></a></figure></div><div id="d42ea836-230b-4277-b76e-7c4d93c12a89" style="width:12.5%" class="column"><figure id="72de10b3-75f9-4553-b222-2e81cb976a43" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/js-file.png"><img style="width:64px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/js-file.png"/></a></figure></div><div id="1b574bef-0b44-40ae-a36e-02daff06990e" style="width:74.99999999999999%" class="column"><figure id="e0e95511-faea-4805-8f5d-77448d5a234b" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/css-document.png"><img style="width:64px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/css-document.png"/></a></figure></div></div><h3 id="7b1c0a5c-bd42-4957-9092-e7a3673a9440" class="block-color-teal_background">𝐁𝐚𝐜𝐤 𝐞𝐧𝐝 &amp; 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐢𝐞𝐬</h3><div id="c0f835a6-2dbd-4f12-b6c8-64ec44468243" class="column-list"><div id="cab9cb02-1209-4b35-9c5b-977dfacce414" style="width:12.5%" class="column"><figure id="9b66faa3-a5c9-4acc-8ed1-2f6e2a9a2f0e" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/java.png"><img style="width:64px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/java.png"/></a></figure></div><div id="b16ea660-169f-47a5-909b-c87c8f7ee9d3" style="width:12.499999999999996%" class="column"><figure id="8ac87a92-0f12-4fb9-9319-0dc6aad0e6f9" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/spring.256x256.png"><img style="width:60px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/spring.256x256.png"/></a></figure></div><div id="5c51a584-4c86-4be7-b3ff-e865ef69c8c4" style="width:18.75%" class="column"><figure id="9183595f-024a-4ac4-921f-de6750fd9e3a" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/apache_kafka_logo_icon_167866.png"><img style="width:120px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/apache_kafka_logo_icon_167866.png"/></a></figure></div><div id="4ab5b8d1-5182-4586-b2f4-26de53969365" style="width:10.416666666666666%" class="column"><figure id="9ced1414-6513-456f-acbe-a575f04eb262" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/python(1).png"><img style="width:64px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/python(1).png"/></a></figure></div><div id="b9b5f4ca-6af8-454c-a4d8-6b0b25cfbe56" style="width:12.5%" class="column"><figure id="7e654eaa-7aab-48a3-9f9c-7b05538ea10d" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/c-sharp.png"><img style="width:64px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/c-sharp.png"/></a></figure></div><div id="d039f69d-8789-4d09-a838-b27e9ad518a7" style="width:33.333333333333336%" class="column"><figure id="32d99aa0-6714-4996-9786-68cd2b6e5c29" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/unity.png"><img style="width:64px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/unity.png"/></a></figure></div></div><h3 id="aea5003c-d134-46ad-af96-cee5879f0bd7" class="block-color-teal_background">𝐂𝐥𝐨𝐮𝐝 𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧𝐬</h3><div id="a152155d-a1d6-441d-b435-3fc74bad3577" class="column-list"><div id="aba92aa7-5dfc-48e4-bd80-fb037b67c0fa" style="width:12.5%" class="column"><figure id="da6a86fd-b889-4437-af44-ae796153387e" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/icons8-amazon-web-services-64.png"><img style="width:64px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/icons8-amazon-web-services-64.png"/></a></figure></div><div id="ad4219d8-6984-48f5-9b29-88a19e77d0c2" style="width:87.50000000000004%" class="column"><figure id="e3654feb-4997-4db6-94bb-fee857c2b353" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/google-cloud.256x206.png"><img style="width:60px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/google-cloud.256x206.png"/></a></figure></div></div><h3 id="eaedcd99-892a-4dc7-b0c8-afaf700e516a" class="block-color-teal_background">𝐂𝐈/𝐂𝐃 𝐖𝐨𝐫𝐤𝐟𝐥𝐨𝐰 𝐓𝐨𝐨𝐥𝐬</h3><div id="69eb4966-27c9-42a8-9203-f01e92b6f04b" class="column-list"><div id="eac955af-b470-4952-965a-e25df9d101e3" style="width:15.000000000000002%" class="column"><figure id="43fbaadf-ece8-4bef-88b1-7fd276a80ff0" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/gradle.256x188.png"><img style="width:72px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/gradle.256x188.png"/></a></figure></div><div id="b096de55-8194-4dab-985a-8bc3c3d94416" style="width:10%" class="column"><figure id="8e0a1cb0-f262-43a1-8744-dc186f4cd1e0" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/maven.144x256.png"><img style="width:36px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/maven.144x256.png"/></a></figure></div><div id="c7fbeac9-4f25-4ef1-b57b-138cb6364fb2" style="width:15.000000000000002%" class="column"><figure id="7630f569-053e-4c9d-a6fd-ef2d86ddb074" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/icons8-jenkins-64.png"><img style="width:64px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/icons8-jenkins-64.png"/></a></figure></div><div id="ef088a3d-8e5b-4fff-82a4-0011242e40e4" style="width:10%" class="column"><figure id="63651b6c-a7a5-4db9-b8f9-4156276ef708" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/docker.png"><img style="width:64px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/docker.png"/></a></figure></div><div id="c0520a1c-a106-4c9f-b215-83bbd9dcdda1" style="width:49.99999999999999%" class="column"><figure id="e14fed8f-2356-4a88-b40d-6f80ad54ebd0" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/icons8-kubernetes-64.png"><img style="width:64px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/icons8-kubernetes-64.png"/></a></figure></div></div><h3 id="1e0ab3e3-ec8b-4bb5-90f5-4b32bfb87f65" class="block-color-teal_background">𝐃𝐚𝐭𝐚𝐛𝐚𝐬𝐞𝐬</h3><div id="d56fa4dd-4d32-4e4b-83bd-40e53000e01c" class="column-list"><div id="ff20127d-d615-45a3-a46b-37651608ef75" style="width:12.5%" class="column"><figure id="a855cef2-9817-4b94-8a14-464921c91ab9" class="image" style="text-align:right"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/mysql.png"><img style="width:72px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/mysql.png"/></a></figure></div><div id="e0a6cb67-391e-4af0-96d9-2fe93ce7411b" style="width:8.333333333333332%" class="column"><figure id="1274dfae-a159-4f01-9629-305535be406b" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/mongodb-original-wordmark.251x256.png"><img style="width:72px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/mongodb-original-wordmark.251x256.png"/></a></figure></div><div id="cabcbc6a-d67e-45dc-b769-cf3c25f59328" style="width:79.16666666666661%" class="column"><figure id="f8549e6b-9986-4502-bd69-cb920a76a8f0" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/sql-server.png"><img style="width:84px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/sql-server.png"/></a></figure></div></div><h3 id="a09f6b8e-809d-494b-9f28-d28bdfd580a0" class="block-color-teal_background">𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞𝐬</h3><div id="96278a6b-fd85-4fce-863e-19ef2a7e2303" class="column-list"><div id="1635895d-4f68-49e5-bf57-48ab1ed26a88" style="width:33.33333333333333%" class="column"><figure id="8f07daac-0142-45af-ab68-315cdb05c257" class="image"><a href="https://images.unsplash.com/photo-1500380804539-4e1e8c1e7118?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb"><img style="width:288px" src="https://images.unsplash.com/photo-1500380804539-4e1e8c1e7118?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb"/></a></figure><p id="6d4049e2-ff23-4a43-aab9-8eba8a6317c8" class="">English C1</p><p id="11f3e6f0-e4f0-422a-8077-ed4314a09294" class="">
+</p><p id="229d6bc4-0d3b-4807-bbf4-2faf08a14591" class="">
+</p></div><div id="d7e5b747-5174-4253-b946-0cdc3ccf47bc" style="width:33.33333333333333%" class="column"><figure id="cb9e621f-fe81-42ec-bbbf-98fc37a06bc9" class="image"><a href="https://images.unsplash.com/photo-1444838639505-f9042c5d2386?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb"><img style="width:288px" src="https://images.unsplash.com/photo-1444838639505-f9042c5d2386?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb"/></a></figure><p id="c776a131-ff2f-43b7-b830-fceb201ee849" class="">German B1</p></div><div id="bb0cae0a-cab1-4186-9e45-91a468f34105" style="width:33.33333333333334%" class="column"><figure id="20895d71-34b6-45e9-9e0e-9bfe01e68c88" class="image"><a href="https://images.unsplash.com/photo-1641555203179-afb3549b2fcc?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb"><img style="width:288px" src="https://images.unsplash.com/photo-1641555203179-afb3549b2fcc?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb"/></a></figure><p id="72789f86-f375-412d-9071-71e5c37b10a3" class="">Ukrainian Native</p><p id="da470e48-27fe-4785-9389-1db90d4896b9" class="">
+</p><p id="abf96465-ea89-4766-8910-ab596bfb3c7b" class="">
+</p></div></div><figure id="cf190def-bc8b-4335-8d94-0dfd82dda73d" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2).png"><img style="width:1751px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2).png"/></a></figure><h1 id="3643e324-04f7-43f2-a278-55fc374684d6" class="">👥 𝐄𝐝𝐮𝐜𝐚𝐭𝐢𝐨𝐧</h1><figure id="ca9e2baf-1013-40b0-bfa8-53f70df01661" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%204.png"><img style="width:1200px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%204.png"/></a></figure><h2 id="26419c88-425f-4e17-9ada-bcd9cfa76899" class="">National Aviation University</h2><h3 id="99c8f829-a3c6-4250-becb-fb5c21ab6b17" class=""><em>Bachelor of Applied Science Bachelor in Software Engineering </em></h3><p id="ef3f1a11-16bf-41a0-988e-591e6caa9d6e" class="">Sep 2020 -  Jul 2024</p><p id="fe65ed73-5940-445e-a9af-d3603ad41179" class="">
+</p><figure id="70f18a41-0db5-4aa8-a90b-6dda656ff27a" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2).png"><img style="width:1751px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2).png"/></a></figure><h1 id="da7304b5-ad1c-412d-9b15-b9583111ef1b" class="">📄 𝐖𝐨𝐫𝐤 𝐄𝐱𝐩𝐞𝐫𝐢𝐞𝐧𝐜𝐞</h1><figure id="490a1201-b11b-49ef-9b67-07ffbf7d2d5f" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%205.png"><img style="width:1200px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%205.png"/></a></figure><ul id="f2d02bb3-a51a-4c76-bad4-0e0d84164056" class="toggle"><li><details open=""><summary>☘️ <em><strong>IT Researcher</strong></em></summary><p id="be7378c3-3522-499f-8ca4-d3822c123369" class="">Mar 2021 - Feb 2022</p><p id="c8059c22-639c-459c-a40c-63c5883b1c76" class="">
+</p></details></li></ul><ul id="4d355dfa-400d-4f1c-ba85-ef5a7e49b4f9" class="toggle"><li><details open=""><summary>🍀 <em><strong>Junior Java Software Developer </strong></em></summary><p id="4f95442e-535a-4c94-85b2-40560e9bb33d" class="">Apr 2022 - Today</p><p id="d023a18e-2cbd-4628-bf1e-b869506750b3" class="">
+</p></details></li></ul><p id="845e6c5a-0ed4-4adc-96fb-16bdd83dc402" class="">
+</p><figure id="43772a9a-002b-4d98-8b1a-d6d2ab6a417c" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2).png"><img style="width:1751px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2).png"/></a></figure><h1 id="8d4896b3-27c3-48fb-b223-3249c9eb739a" class="">👥 𝐎𝐫𝐠𝐚𝐧𝐢𝐳𝐚𝐭𝐢𝐨𝐧𝐬</h1><figure id="e9f3ae5a-eac9-42eb-9040-bd9f4422911f" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%206.png"><img style="width:1200px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%206.png"/></a></figure><ul id="afc17fe3-7c85-4f22-94ed-03f0cfd4443f" class="toggle"><li><details open=""><summary>🧑🏻‍🎓 <em><strong>GitHub Global Campus</strong></em></summary><hr id="dd325095-b9ef-4925-90ec-b5150607cdf2"/><p id="32a6a726-d742-4b72-8b91-54d1e423a47b" class="">Dec 2021 - Sep 2023</p><p id="cca18194-8b17-4240-baf8-5c0aa847a2ad" class="">The platform offers students, teachers, and schools access to practical development tools and events to influence the future of software development. They provide various advantages, such as the Student Developer Pack, which consists of more than 100 offers for developer tools at no cost.</p></details></li></ul><ul id="de50c74c-85fc-4609-9467-2017eb9d72f6" class="toggle"><li><details open=""><summary>🪙 <em><strong>GitHub Open Source Sponsors</strong></em></summary><p id="d6261cd4-fe31-4c71-ba6d-3b2ae7fda09c" class=""><em>Oct 2023 - Current Day</em></p><p id="602c7959-b8a5-4be5-9876-945a4565b091" class="">is a program that allows individuals and organizations to support open-source contributors and their projects. Thanks to the program, open-source contributors can receive payment for their work, which enables open-source careers. The program also collaborates with companies worldwide to promote the sustainability of open-source work.</p></details></li></ul><ul id="f44d1bda-5cca-49c1-b1e6-5d72f5230829" class="toggle"><li><details open=""><summary>👩‍💻 <em><strong>WomenTech Network</strong></em></summary><hr id="ea512608-4e7d-4de3-b4da-c83e72fad99a"/><p id="8b117099-428e-4c22-b49b-63c5c094ac9a" class=""><em>Oct 2023 - Current Day</em></p><p id="ffccbc96-4dda-4e68-8dba-d796ac8aab68" class="">is a platform that fosters gender diversity in the tech industry and connects skilled professionals with top companies and innovative startups that prioritize diversity and inclusion. They provide scholarships, mentorship programs, and networking opportunities for women in different roles across the technology sector.</p></details></li></ul><ul id="adbc8350-c67c-44e9-aa17-09b7ce33de35" class="toggle"><li><details open=""><summary>👩‍💼 <em><strong>Girl Develop It</strong></em></summary><hr id="8eb0c264-378d-438a-843e-3d75eb4276bb"/><p id="012d0361-b702-4b28-93d4-1ed3029f9cdd" class=""><em>Oct 2023 - Current Day</em></p><p id="fc9ca8de-4936-41a1-8153-c6803bfa57db" class="">is an organization that offers affordable programs for adult women and non-binary individuals to learn web and software development in a supportive and inclusive environment. They provide a range of options including classes, workshops, and mentorship programs to empower women in the tech industry.</p></details></li></ul><p id="04cf7d70-5a7b-4e6b-b7d8-bbc200cc206c" class="">
+</p><figure id="2d7b1953-7294-46a0-b6a7-b34815b8b80e" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2).png"><img style="width:1751px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2).png"/></a></figure><h1 id="149931f7-d36f-4965-adab-b0d081d08100" class="">📜 𝐏𝐫𝐨𝐟𝐞𝐬𝐬𝐢𝐨𝐧𝐚𝐥 𝐂𝐞𝐫𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐞𝐬</h1><p id="a11787de-1305-4a7e-b170-d31484c5940e" class="">beyond the numerous Udemy&amp;Coursera certificates…</p><figure id="a8f8b12b-7c05-424d-aeb4-ea007e9f0e0b" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%207.png"><img style="width:1200px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%207.png"/></a></figure><div id="4d9f20de-659f-4949-ae0d-66a67310e018" class="collection-content"><h4 class="collection-title"></h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesDate"><path d="M3.29688 14.4561H12.7031C14.1797 14.4561 14.9453 13.6904 14.9453 12.2344V3.91504C14.9453 2.45215 14.1797 1.69336 12.7031 1.69336H3.29688C1.82031 1.69336 1.05469 2.45215 1.05469 3.91504V12.2344C1.05469 13.6973 1.82031 14.4561 3.29688 14.4561ZM3.27637 13.1162C2.70898 13.1162 2.39453 12.8154 2.39453 12.2207V5.9043C2.39453 5.30273 2.70898 5.00879 3.27637 5.00879H12.71C13.2842 5.00879 13.6055 5.30273 13.6055 5.9043V12.2207C13.6055 12.8154 13.2842 13.1162 12.71 13.1162H3.27637ZM6.68066 7.38086H7.08398C7.33008 7.38086 7.41211 7.30566 7.41211 7.05957V6.66309C7.41211 6.41699 7.33008 6.3418 7.08398 6.3418H6.68066C6.44141 6.3418 6.35938 6.41699 6.35938 6.66309V7.05957C6.35938 7.30566 6.44141 7.38086 6.68066 7.38086ZM8.92285 7.38086H9.31934C9.56543 7.38086 9.64746 7.30566 9.64746 7.05957V6.66309C9.64746 6.41699 9.56543 6.3418 9.31934 6.3418H8.92285C8.67676 6.3418 8.59473 6.41699 8.59473 6.66309V7.05957C8.59473 7.30566 8.67676 7.38086 8.92285 7.38086ZM11.1582 7.38086H11.5547C11.8008 7.38086 11.8828 7.30566 11.8828 7.05957V6.66309C11.8828 6.41699 11.8008 6.3418 11.5547 6.3418H11.1582C10.9121 6.3418 10.8301 6.41699 10.8301 6.66309V7.05957C10.8301 7.30566 10.9121 7.38086 11.1582 7.38086ZM4.44531 9.58203H4.84863C5.09473 9.58203 5.17676 9.50684 5.17676 9.26074V8.86426C5.17676 8.61816 5.09473 8.54297 4.84863 8.54297H4.44531C4.20605 8.54297 4.12402 8.61816 4.12402 8.86426V9.26074C4.12402 9.50684 4.20605 9.58203 4.44531 9.58203ZM6.68066 9.58203H7.08398C7.33008 9.58203 7.41211 9.50684 7.41211 9.26074V8.86426C7.41211 8.61816 7.33008 8.54297 7.08398 8.54297H6.68066C6.44141 8.54297 6.35938 8.61816 6.35938 8.86426V9.26074C6.35938 9.50684 6.44141 9.58203 6.68066 9.58203ZM8.92285 9.58203H9.31934C9.56543 9.58203 9.64746 9.50684 9.64746 9.26074V8.86426C9.64746 8.61816 9.56543 8.54297 9.31934 8.54297H8.92285C8.67676 8.54297 8.59473 8.61816 8.59473 8.86426V9.26074C8.59473 9.50684 8.67676 9.58203 8.92285 9.58203ZM11.1582 9.58203H11.5547C11.8008 9.58203 11.8828 9.50684 11.8828 9.26074V8.86426C11.8828 8.61816 11.8008 8.54297 11.5547 8.54297H11.1582C10.9121 8.54297 10.8301 8.61816 10.8301 8.86426V9.26074C10.8301 9.50684 10.9121 9.58203 11.1582 9.58203ZM4.44531 11.7832H4.84863C5.09473 11.7832 5.17676 11.708 5.17676 11.4619V11.0654C5.17676 10.8193 5.09473 10.7441 4.84863 10.7441H4.44531C4.20605 10.7441 4.12402 10.8193 4.12402 11.0654V11.4619C4.12402 11.708 4.20605 11.7832 4.44531 11.7832ZM6.68066 11.7832H7.08398C7.33008 11.7832 7.41211 11.708 7.41211 11.4619V11.0654C7.41211 10.8193 7.33008 10.7441 7.08398 10.7441H6.68066C6.44141 10.7441 6.35938 10.8193 6.35938 11.0654V11.4619C6.35938 11.708 6.44141 11.7832 6.68066 11.7832ZM8.92285 11.7832H9.31934C9.56543 11.7832 9.64746 11.708 9.64746 11.4619V11.0654C9.64746 10.8193 9.56543 10.7441 9.31934 10.7441H8.92285C8.67676 10.7441 8.59473 10.8193 8.59473 11.0654V11.4619C8.59473 11.708 8.67676 11.7832 8.92285 11.7832Z"></path></svg></span>Date Issued</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>From</th></tr></thead><tbody><tr id="4790fe0e-d775-49d5-91e9-83f5fe6332ae"><td class="cell-title"><a href="https://www.notion.so/Deutsch-B1-4790fe0ed77549d591e983f5fe6332ae?pvs=21"><img class="icon" src="https://www.notion.so/icons/playback-play_gray.svg"/>Deutsch B1</a></td><td class="cell-KwK;"><time>@25/07/2023</time></td><td class="cell-QKPV"><span class="selected-value select-value-color-default">telc</span></td></tr><tr id="2aaa5aff-6de4-4423-8785-9bf1c3aa54e9"><td class="cell-title"><a href="https://www.notion.so/English-C1-2aaa5aff6de4442387859bf1c3aa54e9?pvs=21"><img class="icon" src="https://www.notion.so/icons/playback-play_gray.svg"/>English C1</a></td><td class="cell-KwK;"><time>@07/12/2019</time></td><td class="cell-QKPV"><span class="selected-value select-value-color-pink">IELTS</span></td></tr><tr id="b7e79655-f16b-4615-8dbe-a55567ae7af7"><td class="cell-title"><a href="https://www.notion.so/AWS-Certified-Solutions-Architect-Associate-b7e79655f16b46158dbea55567ae7af7?pvs=21"><img class="icon" src="https://www.notion.so/icons/playback-play_gray.svg"/>AWS Certified Solutions Architect - Associate </a></td><td class="cell-KwK;"><time>@10/03/2023</time></td><td class="cell-QKPV"><span class="selected-value select-value-color-orange">AWS</span></td></tr><tr id="6da689cd-5faf-4397-8213-6d0c7f6bd110"><td class="cell-title"><a href="https://www.notion.so/AWS-Certified-Cloud-Practitioner-6da689cd5faf439782136d0c7f6bd110?pvs=21"><img class="icon" src="https://www.notion.so/icons/playback-play_gray.svg"/>AWS Certified Cloud Practitioner </a></td><td class="cell-KwK;"><time>@07/03/2023</time></td><td class="cell-QKPV"><span class="selected-value select-value-color-orange">AWS</span></td></tr></tbody></table><br/><br/></div><p id="6e6011be-3446-4d9d-8463-92149c88fdd8" class="">
+</p><figure id="29865cca-c383-4102-a51a-952f8bb28461" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2)%201.png"><img style="width:1751px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2)%201.png"/></a></figure><h1 id="efba3115-bbe2-4f1c-9ff4-7617b0f433c2" class="">💡 𝐏𝐞𝐭 𝐏𝐫𝐨𝐣𝐞𝐜𝐭𝐬</h1><figure id="f518ff5a-3032-46d1-8324-7f43f827e046" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%208.png"><img style="width:1200px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/Rectangle_332cream_square_flat%208.png"/></a></figure><figure id="2f0a84f4-cef1-48da-83e5-59f76dcb220a"><div class="source"><a href="https://indify.co/widgets/live/button/7yWLgQ2iTvvK4TQpPi1w">https://indify.co/widgets/live/button/7yWLgQ2iTvvK4TQpPi1w</a></div></figure><p id="57aea736-9627-4583-ab86-c878cd8a5dae" class="">
+</p><figure id="f46289fc-bd0b-4a8d-9400-040a58293ae7" class="image"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2)%202.png"><img style="width:1751px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/New_Project(2)%202.png"/></a></figure><p id="03d23ef2-8cbf-4119-bea0-f90bc32d010a" class="">
+</p><p id="91236983-5bcd-4b67-bf18-616b43367557" class="">
+</p><figure class="block-color-default callout" style="white-space:pre-wrap;display:flex" id="78adcad7-797e-45be-bbc2-aa6ae55fc3b3"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%">Icons by riajulislam, Freepik on <span style="border-bottom:0.05em solid"><em><strong><a href="https://www.flaticon.com/free-icons/python">Flaticon</a></strong></em></span><em><strong>, </strong></em><em><strong><a href="https://icons8.com/">Icons8</a></strong></em></div></figure><figure class="block-color-default callout" style="white-space:pre-wrap;display:flex" id="875184bb-c551-4088-8e6a-0a3aee173cb2"><div style="font-size:1.5em"><span class="icon">🌐</span></div><div style="width:100%"><strong>2023 @Anastasiia Bichurina. Made with </strong>❤️ and dedication.</div></figure><figure id="21c4e145-9fb3-44cf-b169-e039f1159871" class="image" style="text-align:center"><a href="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/transparent-mountain-forest-forest-trees-mountains-landscape-6522cb0fe0f122.2598443116967790239214.png"><img style="width:528px" src="%F0%9D%90%80%F0%9D%90%A7%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%AC%F0%9D%90%A2%F0%9D%90%A2%F0%9D%90%9A%20%F0%9D%90%81%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A1%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%A2%F0%9D%90%A7%F0%9D%90%9A%20-%20%F0%9D%90%89%F0%9D%90%9A%F0%9D%90%AF%F0%9D%90%9A%20%F0%9D%90%92%F0%9D%90%A8%F0%9D%90%9F%F0%9D%90%AD%F0%9D%90%B0%F0%9D%90%9A%F0%9D%90%AB%F0%9D%90%9E%20%F0%9D%90%83%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A8%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%204a2638ca50bf48a0b53ba37a500e99ba/transparent-mountain-forest-forest-trees-mountains-landscape-6522cb0fe0f122.2598443116967790239214.png"/></a></figure></div><div id="92ad17c3-17d3-49d9-9132-6f5fd3d34f9b" style="width:43.09392265193371%" class="column"><p id="89accef0-1abd-4d00-b5f8-9933e6e67ac2" class="">
+</p><p id="a5990ea5-40e0-4dd6-84a6-23abb2039a2a" class="">
+</p><p id="d15f79da-df6a-42f3-b643-34aa15d8b10b" class="">
+</p><p id="df5535fd-a31b-4f07-9139-6a15de5528c9" class="">
+</p><p id="07c49e7c-5cb3-4872-b22f-055797970628" class="">
+</p><p id="7f465384-f6ea-4a76-ab5a-740269546577" class="">
+</p><p id="519ea53e-af73-41f0-8f66-dd41b548e744" class="">
+</p><p id="68cbc10f-32e8-4a8d-a813-69f5152222be" class="">
+</p><p id="e1a1b3e4-4170-4090-b73e-56bb8e0f9294" class="">
+</p><p id="01717823-696e-4cf5-ba0f-5baf05743887" class="">
+</p><p id="fbde4fe0-e954-4974-b743-ecb4d79f27cd" class="">
+</p><p id="7572c032-05a6-42a3-a058-e9822ac69827" class="">
+</p><p id="79c90664-bd6c-4221-896b-3266a15f8091" class="">
+</p><p id="370b8776-d696-43cc-94e6-5a890deaf5cc" class="">
+</p><p id="4bb04cbe-c752-41ca-a306-57013f323533" class="">
+</p><p id="9b058797-4130-46fa-a3d4-ac50896bc7ef" class="">
+</p><p id="48372179-aff3-43e4-aa37-7d54ce519dbf" class="">
+</p><p id="33ef6f63-65f0-4e50-841a-94254038aa05" class="">
+</p><p id="6e65d68b-0fed-47c4-9a7e-d62a1f611939" class="">
+</p><p id="2b40e190-a424-4ea3-809f-3fa96e34df5f" class="">
+</p><p id="f8769801-38de-4cfb-934f-229c0f12cc65" class="">
+</p><p id="1912c8cb-ec05-4bed-bc70-d852c0e77597" class="">
+</p><p id="c336570e-376a-42a0-b969-6fe4aa17599c" class="">
+</p><p id="d65c6a63-b5b9-4514-adcb-6fa93bcf30d5" class="">
+</p><p id="3d9dded0-f834-4055-b295-94875537fa8d" class="">
+</p><figure id="965e09d6-f733-4691-9797-60303b4eb32b" class="image"><a href="https://media.giphy.com/media/L9RmSgRbSdowTuRn2T/giphy.gif"><img style="width:288px" src="https://media.giphy.com/media/L9RmSgRbSdowTuRn2T/giphy.gif"/></a></figure><p id="a3cbf635-c78a-4db2-b570-8fbd3372cf40" class="">
+</p><p id="04bca458-022c-4514-a412-607896d3f9dd" class="">
+</p><p id="48bb13cc-884b-4c14-8fd3-51704825d6ce" class="">
+</p><p id="0d60c4dd-d379-4262-8a55-491ffc512f29" class="">
+</p><p id="806dbaf4-ec6e-474e-b448-00ed3c8edf8e" class="">
+</p><p id="5279a1c7-95bc-4041-b91f-cdec888ab747" class="">
+</p><p id="a8d161e4-befa-4644-9428-4e600427e1af" class="">
+</p><p id="a78fb01c-cccc-4bad-8f4f-d92ffcf0c4d5" class="">
+</p><p id="ec3d3d74-cf18-41ae-8260-ca2ca11799ce" class="">
+</p><p id="4c211a3d-3e4b-4e93-affd-c812ab21cd38" class="">
+</p><p id="279ae7bf-a9ed-49d7-aa51-fa80c772b66a" class="">
+</p><p id="84b94fdc-83f1-4a6a-a45c-bedae360edae" class="">
+</p><p id="371e9e06-30d9-4675-946c-9a665a4fbc9b" class="">
+</p><p id="039507c5-e890-4232-ae39-518f2626aeca" class="">
+</p><p id="cab8d836-e956-4529-a237-0df28727d8be" class="">
+</p><p id="6ccfc1cd-6afc-4628-850d-327123c32b11" class="">
+</p><p id="f227bb46-ffc8-49ff-b84e-4c4fa69d1886" class="">
+</p><p id="6ae043f3-81af-477f-bd78-41d099d64204" class="">
+</p><p id="c6df65d2-f62b-4356-b3e5-2fdc67dc8416" class="">
+</p><p id="d0b18236-47b1-40a1-9852-96d2a07a66a9" class="">
+</p><p id="68907aaa-5643-424e-b2b1-8059fbd42b88" class="">
+</p><p id="3092e36e-6fb1-48ec-bb32-c2f822f03504" class="">
+</p><p id="7c1b2931-1c6f-4596-b4d4-e5e32083f4d2" class="">
+</p><p id="0454d873-57c3-43db-bb5c-16455a27c21a" class="">
+</p><p id="06cf15f7-c809-40ae-8437-85689c015821" class="">
+</p><p id="71222d59-a698-423c-9fb8-8d7673d41bed" class="">
+</p><p id="a9c68390-66f7-4857-8e37-f1f9a601517a" class="">
+</p><p id="429e5c35-0f5f-4d7b-816b-dce0b1f8f4be" class="">
+</p><p id="243cfbfd-e588-47ad-a87c-d1d0b06f42b3" class="">
+</p><p id="67a6b35d-29bb-4c00-9eb1-c82a1de1fabb" class="">
+</p><p id="dbf87103-7505-4cbd-99a5-05154e327fa8" class="">
+</p><p id="8744002f-dd8b-403c-91f1-5758c55bf27c" class="">
+</p><p id="d7c76d2f-1734-4852-a752-3c6210d149e1" class="">
+</p><p id="123f236c-d684-414e-887e-32b9b0ca2003" class="">
+</p><p id="591d54c3-a6b6-4b17-929e-882dba9f5c50" class="">
+</p><p id="46581bf6-eee0-4d45-ab9b-ca11cb86a1f9" class="">
+</p><p id="4bb2bb57-6b3a-4337-9cff-11bd983529be" class="">
+</p><p id="b106889a-d0fc-4140-8c1e-7b963399e8f2" class="">
+</p><p id="4fda8234-e806-46c6-9734-3798582aec50" class="">
+</p><p id="6a9b793a-cd74-4fda-abf6-180ef39a5044" class="">
+</p><p id="1e25ac85-c668-4687-87bd-cbc3192124c9" class="">
+</p><p id="3cf4fa24-baff-4939-89bb-b4cb3d881154" class="">
+</p><p id="aac556d9-8dab-4dfc-9e77-c46288822946" class="">
+</p><p id="42b83c0a-c53b-4251-8023-c61faa5fdf38" class="">
+</p><p id="87f110be-fa88-4e31-8886-2729d54ac4ff" class="">
+</p><figure id="e18ca784-bfd9-4c69-8cf1-c2b9e8d0a491" class="image"><a href="https://media.giphy.com/media/MSXDJ1T71CQhKjt1FB/giphy.gif"><img style="width:288px" src="https://media.giphy.com/media/MSXDJ1T71CQhKjt1FB/giphy.gif"/></a></figure></div></div><p id="dab81150-f5fa-46e9-a11d-f0f043bc5e7c" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
